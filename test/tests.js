@@ -17,16 +17,16 @@ var tests = {
     responsive : {
         //Checks
         "doc-width": [
-        ,   {doc: "width_fail.html", errors: ["responsive.doc-width.err"]} //fail
+        ,   {doc: "width_fail.html", errors: ["responsive.doc-width.toolarge"]} //fail
         ,   {doc: "width_success.html"} //pass
         ]
     ,   "meta-viewport": [
-        ,   {doc: "viewport_incorrect-initial-scale.html", errors: ["responsive.meta-viewport.6"]} //fail
-        ,   {doc: "viewport_incorrect-width.html", errors: ["responsive.meta-viewport.5"]}
-        ,   {doc: "viewport_many-viewport.html", errors: ["responsive.meta-viewport.2"]}
-        ,   {doc: "viewport_no-initial-scale.html", errors: ["responsive.meta-viewport.4"]}
-        ,   {doc: "viewport_no-meta-viewport.html", errors: ["responsive.meta-viewport.0"]}
-        ,   {doc: "viewport_no-width.html", errors: ["responsive.meta-viewport.3"]}
+        ,   {doc: "viewport_incorrect-initial-scale.html", errors: ["responsive.meta-viewport.incorrectscale"]} //fail
+        ,   {doc: "viewport_incorrect-width.html", errors: ["responsive.meta-viewport.incorrectwidth"]}
+        ,   {doc: "viewport_many-viewport.html", errors: ["responsive.meta-viewport.multiple"]}
+        ,   {doc: "viewport_no-initial-scale.html", errors: ["responsive.meta-viewport.noscale"]}
+        ,   {doc: "viewport_no-meta-viewport.html", errors: ["responsive.meta-viewport.nodecl"]}
+        ,   {doc: "viewport_no-width.html", errors: ["responsive.meta-viewport.nowidth"]}
         ,   {doc: "viewport_ok.html"}
     ]
     }
