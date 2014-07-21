@@ -55,7 +55,7 @@ function loadProgressPage () {
 	//$('#analytics').hide();
 	$('#sources').hide();
 	$('#export').hide();
-	$('#tool-title').hide();
+	$('#overview').show();
 	$('#console').show();
 	$('.progressbar').show();
 }
@@ -64,12 +64,10 @@ function loadResultPage () {
 	$('#main-action').hide();
 	$('.intro').hide();
 	$('.sidebar').show(1000);
-	$('#overview').show(1000);
 	$('#reports').show();
 	//$('#analytics').show();
 	//$('#sources').show();
 	$('#export').show();
-	$('#tool-title').show();
 }
 
 /*
@@ -119,7 +117,7 @@ socket.on('err', function (data){
 });
 socket.on('end', function (data){
 	result.source = data.sources.html.content[0];
-	$('#smartphone-img').append($('<img src="' + data.overviews.screenshot + '"' + 'width="225px" height="354px" alt="screenshot">'));
+	var img = $('#smartphone-img img').attr('src', data.overviews.screenshot);
 	$('#htmlFile').text(result.source);
 	stringifySourceCode();
 	loadResultPage();
