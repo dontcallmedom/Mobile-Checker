@@ -31,6 +31,9 @@ app.use(express.static("public"));
 function Sink () {}
 util.inherits(Sink, events.EventEmitter);
 
+app.post('/report', function(req, res) {
+    console.log(res);
+});
 
 app.get('/', function(req, res){
     res.sendfile('index.html');
