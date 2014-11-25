@@ -6,5 +6,5 @@ install:
  - browsermob-proxy-2.0-beta-9/bin/browsermob-proxy &
  - sudo apt-get install chromium-browser
 script:
- - npm test
+ - mocha --timeout 20000 --globals Intl,IntlPolyfill,ErrorHandler test/tests.js
 
