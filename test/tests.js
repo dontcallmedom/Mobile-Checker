@@ -223,6 +223,7 @@ function Sink() {
     this.ok = 0;
     this.error = [];
     this.warning = [];
+    this.newfeature = [];
     this.info = [];
     this.done = 0;
 }
@@ -246,9 +247,10 @@ describe('Starting test suite', function() {
                 describe("Check " + check, function() {
                     tests[category][check].forEach(function(
                         test) {
-                        var testOutcome = test.error ? "error" : test.warning ? "warning" : test.info ? "info" : "pass";
+                        var testOutcome = test.error ? "error" : test.newfeature ? "newfeature" : test.warning ? "warning" : test.info ? "info" : "pass";
                         var formatter;
                         if (test.error === undefined) test.error = [];
+                        if (test.newfeature === undefined) test.newfeature = [];
                         if (test.warning === undefined) test.warning = [];
                         if (test.info === undefined) test.info = [];
 
@@ -281,6 +283,10 @@ describe('Starting test suite', function() {
                                         ).to.be.empty();
 
                                         expect(sink
+                                            .newfeature
+                                        ).to.be.empty();
+
+                                        expect(sink
                                             .warning
                                         ).to.be.empty();
 
@@ -291,6 +297,8 @@ describe('Starting test suite', function() {
                                     } else {
                                         sort(sink.error,
                                              test.error);
+                                        sort(sink.newfeature,
+                                             test.newfeature);
                                         sort(sink.warning,
                                              test.warning);
                                         sort(sink.info,
@@ -301,6 +309,14 @@ describe('Starting test suite', function() {
                                                 .error,
                                                 test
                                                 .error
+                                            );
+
+                                        sink.newfeture =
+                                            cleanNulls(
+                                                sink
+                                                .newfeature,
+                                                test
+                                                .newfeature
                                             );
 
                                         sink.warning =
@@ -322,6 +338,11 @@ describe('Starting test suite', function() {
                                             .error
                                         ).to.eql(
                                             test.error
+                                        );
+                                        expect(sink
+                                            .newfeature
+                                        ).to.eql(
+                                            test.newfeature
                                         );
                                         expect(sink
                                             .warning
