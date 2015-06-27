@@ -163,7 +163,7 @@ table {
     border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-#error-issue-feed, #warning-issue-feed, #info-issue-feed{
+#newfeature-issue-feed, #error-issue-feed, #warning-issue-feed, #info-issue-feed{
     padding: 0px;
     margin-top: 20px;
     background-color: white;
@@ -194,7 +194,9 @@ table {
     color: #efc94c;
 }
 
-#info-issue-feed #issue-status span {
+
+
+#newfeature-issue-feed #newfeature-status span, #info-issue-feed #issue-status span {
     font-size: 40px;
     color: #3498db;
 }
@@ -243,7 +245,7 @@ table {
    color: #efc94c;
 }
 
-.alert-info {
+.alert-newfeature, .alert-info {
     color: #3498db;
 }
 

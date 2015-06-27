@@ -13,6 +13,7 @@ var settings = {
 };
 
 var errors = 0;
+var newfeatures = 0;
 var warnings = 0;
 var infos = 0;
 
@@ -94,14 +95,17 @@ function loadFailurePage() {
 function loadProgressPage() {
     errors = 0;
     warnings = 0;
+    newfeatures = 0;
     infos = 0;
     $('#report').show();
     $('#tip-issue-feed').empty();
     $('#info-issue-feed').empty();
     $('#error-issue-feed').empty();
+    $('#newfeature-issue-feed').empty();
     $('#warning-issue-feed').empty();
     $('#info-issue-feed').hide();
     $('#error-issue-feed').hide();
+    $('#newfeature-issue-feed').hide();
     $('#warning-issue-feed').hide();
     $('#smartphone').empty();
     $('#cog1').addClass("active");
@@ -249,6 +253,16 @@ socket.on('err', function(data) {
         }
         $('#error-issue-feed').append($(data.issue));
         errors++;
+    }
+    if (data.status == "newfeature") {
+        if (newfeatures == 0) {
+            $('#newfeature-issue-feed').show();
+            var newfeaturetitle = "<div class='alert alert-newfeature alert-dismissible' role='alert'>"
+            + " Opportunity for new features</div>";
+            $('#newfeature-issue-feed').append($(newfeaturetitle));
+        }
+        $('#newfeature-issue-feed').append($(data.issue));
+        newfeatures++;
     }
     if (data.status == "warning") {
         if (warnings == 0) {

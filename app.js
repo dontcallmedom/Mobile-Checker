@@ -196,6 +196,9 @@ io.on('connection', function(socket) {
         sink.on('ok', function(data) {
             socket.emit('ok', data);
         });
+        sink.on('newfeature', function(data) {
+            socket.emit('newfeature', data);
+        });
         sink.on('warning', function(data) {
             socket.emit('warning', data);
         });
