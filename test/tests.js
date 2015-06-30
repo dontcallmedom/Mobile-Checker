@@ -310,7 +310,8 @@ var tests = {
                         error: {
                             "code": "ENOTFOUND",
                             "errno": "ENOTFOUND",
-                            "syscall": "getaddrinfo"
+                            "syscall": "getaddrinfo",
+                            "hostname": "domain-does-not-exist"
                         }
                     }
                 }]
