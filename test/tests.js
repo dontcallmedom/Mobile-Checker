@@ -107,17 +107,11 @@ var tests = {
                     number: 2,
                     redirects: [{
                         from: "http://0.0.0.0:3001/redirect.css",
-                        to: "http://0.0.0.0:3001/css/style.css",
-                        wastedBW: 663,
-                        latency: null
+                        to: "http://0.0.0.0:3001/css/style.css"
                     }, {
                         from: "http://0.0.0.0:3001/scheme-relative-redirect",
-                        to: "http://0.0.0.0:3001/js/script.js",
-                        wastedBW: 576,
-                        latency: null
-                    }],
-                    totalWastedBW: 1239,
-                    totalLatency: null
+                        to: "http://0.0.0.0:3001/js/script.js"
+                    }]
                 }
             }]
         }],
