@@ -17,6 +17,7 @@ var express = require("express"),
     path = require('path'),
     fs = require("fs"),
     insafe = require("insafe"),
+    portPicker = require("./lib/port-picker.js"),
     formatter = require('./lib/reports/format.js');
 
 var SCREENSHOTS_DIR = 'public/tmp/screenshots/';
@@ -194,6 +195,7 @@ app.get('/logs', function(req, res) {
 init();
 
 io.on('connection', function(socket) {
+    var port = portPicker.pickPort();
     updateLogs('NEW_CLIENT', socket);
     socket.on('check', function(data) {
         var sink = new Sink(),
@@ -214,6 +216,7 @@ io.on('connection', function(socket) {
             socket.emit('screenshot', data);
         });
         sink.on('done', function() {
+            portPicker.releasePort(port);
             socket.emit('done');
         });
         sink.on('end', function(data) {
@@ -255,6 +258,7 @@ io.on('connection', function(socket) {
                     profile: data.profile,
                     checklist: checklist,
                     id: uid,
+                    proxyport: port,
                     SCREENSHOTS_DIR: SCREENSHOTS_DIR,
                     lang: "en"
                 });

@@ -8,6 +8,7 @@ var Checker = require("../lib/checker").Checker,
     expect = require("expect.js"),
     events = require("events"),
     util = require("util"),
+    portPicker = require("../lib/port-picker.js"),
     uuid = require('node-uuid');
 
 
@@ -351,7 +352,9 @@ describe('Starting test suite', function() {
                         it("should " + (testOutcome === "pass" ?
                                 "emit no report" : "emit a report") +
                             " for " + test.doc,
-                            function(done) {
+                           function(done) {
+                               var proxyPort = portPicker.pickPort();
+
                                 var c = require(
                                         "../lib/checks/" +
                                         category + "/" +
@@ -371,6 +374,7 @@ describe('Starting test suite', function() {
                                         sink.done++;
                                     });
                                 sink.on('end', function() {
+                                    portPicker.releasePort(proxyPort);
                                     if (testOutcome === "pass") {
                                         expect(sink
                                             .error
@@ -439,6 +443,7 @@ describe('Starting test suite', function() {
                                         "/docs/" +
                                         test.doc,
                                     events: sink,
+                                    proxyPort: proxyPort,
                                     profile: "default",
                                     checklist: [c],
                                     id: uuid.v4()
