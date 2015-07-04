@@ -389,51 +389,17 @@ describe('Starting test suite', function() {
                                         ).to.be.empty();
                                         //expect(sink.ok).to.eql(sink.done);
                                     } else {
-                                        sort(sink.error,
-                                             test.error);
-                                        sort(sink.warning,
-                                             test.warning);
-                                        sort(sink.info,
-                                             test.info);
-                                        sink.error =
+                                        sort(sink[testOutcome],
+                                             test[testOutcome]);
+                                        sink[testOutcome] =
                                             cleanNulls(
-                                                sink
-                                                .error,
-                                                test
-                                                .error
+                                                sink[testOutcome],
+                                                test[testOutcome]
                                             );
-
-                                        sink.warning =
-                                            cleanNulls(
-                                                sink
-                                                .warning,
-                                                test
-                                                .warning
-                                            );
-
-                                        sink.info =
-                                            cleanNulls(
-                                                sink
-                                                .info,
-                                                test
-                                                .info
-                                            );
-                                        expect(sink
-                                            .error
+                                        expect(sink[testOutcome]
                                         ).to.eql(
-                                            test.error
+                                            test[testOutcome]
                                         );
-                                        expect(sink
-                                            .warning
-                                        ).to.eql(
-                                            test.warning
-                                        );
-                                        expect(sink
-                                            .info
-                                        ).to.eql(
-                                            test.info
-                                        );
-
                                     }
                                     done();
                                 });
