@@ -23,17 +23,17 @@ var express = require("express"),
 var SCREENSHOTS_DIR = 'public/tmp/screenshots/';
 
 var checklist = [
-    require('./lib/checks/performance/number-requests'), require(
-        './lib/checks/performance/redirects'), require(
-        './lib/checks/performance/http-errors'), require(
-        './lib/checks/performance/compression'), require(
-        './lib/checks/responsive/doc-width'), require(
-        './lib/checks/responsive/meta-viewport'), require(
-        './lib/checks/responsive/screenshot'), require(
-        './lib/checks/compatibility/flash-detection'), require(
-        './lib/checks/compatibility/css-prefixes'), require(
-        './lib/checks/interactions/alert'), require(
-        './lib/checks/integration/manifest')
+    require('./lib/checks/performance/number-requests')
+    , require('./lib/checks/performance/redirects')
+    , require('./lib/checks/performance/http-errors')
+    , require('./lib/checks/performance/compression')
+    , require('./lib/checks/responsive/doc-width')
+    , require('./lib/checks/responsive/meta-viewport')
+    , require('./lib/checks/responsive/screenshot')
+    , require('./lib/checks/compatibility/flash-detection')
+    , require('./lib/checks/compatibility/css-prefixes')
+    , require('./lib/checks/interactions/alert')
+    , require('./lib/checks/integration/manifest')
 ];
 
 var logs = {
