@@ -13,8 +13,7 @@ var settings = {
 var errors = 0;
 var warnings = 0;
 var infos = 0;
-
-console.log(window.innerWidth);
+var done = false;
 
 var checkButton = document.getElementById('submit');
 checkButton.addEventListener('click', clickHandler, true);
@@ -213,7 +212,9 @@ socket.on('done', function(data) {});
 socket.on('ok', function(data) {});
 
 socket.on('disconnect', function() {
-    loadFailurePage();
+    if (!done) {
+        loadFailurePage();
+    }
 });
 
 socket.on('wait', function(data) {
@@ -269,4 +270,5 @@ socket.on('screenshot', function(path) {
 //server event : detect end of all checks and call loadResultPage function.
 socket.on('end', function() {
     loadResultPage();
+    done = true;
 });
