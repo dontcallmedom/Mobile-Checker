@@ -150,8 +150,8 @@ function loadResultPage() {
     $('#cog1').removeClass("active");
     $('#cog2').removeClass("active");
     $("#inprogress").hide("1s");
-    $("#tipbody").addClass("collapse");
     $('#navbar-report').addClass("navbar-active");
+    $('#tiptoggle').click();
 }
 
 //PROTOCOL of client Side
