@@ -376,3 +376,21 @@ table tbody {
 }
 
 td.number { text-align:right;}
+
+a[data-toggle]::before {
+  font: normal normal normal 16px/1 octicons;
+  display: inline-block;
+  text-decoration: none;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+    content: "\f0A3 ";
+}
+
+a[data-toggle].collapsed::before {
+    content: "\f078 ";
+}
